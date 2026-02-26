@@ -5,4 +5,15 @@
 			"path": "/projects/molecule_test"
 		}
 	],
+	"settings": {
+		"workbench.colorTheme": "Solarized Light",
+		"workbench.preferredDarkColorTheme": "Solarized Light",
+		"workbench.preferredLightColorTheme": "Solarized Light",
+		"files.associations": {
+			"*.yaml": "ansible",
+			"*.yml": "ansible"
+		},
+		"ansible.validation.enabled": true,
+		"ansible.validation.lint.enabled": true
+	}
 }
