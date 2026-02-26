@@ -10,8 +10,10 @@ provisioner:
 
 scenario:
   test_sequence:
+    - dependency
     - destroy
     - create
     - converge
     - idempotence
+    - cleanup
     - destroy
