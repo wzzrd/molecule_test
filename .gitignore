@@ -1,2 +1,9 @@
 .claude
 .ansible
+.config
+.cache
+.kube
+.local
+.bash_history
+.bashrc
+.profile
