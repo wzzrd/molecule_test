@@ -1,20 +1,28 @@
----
-# cspell: disable=devspaces
-schemaVersion: 2.2.2
+schemaVersion: 2.2.0
+attributes:
+  controller.devfile.io/storage-type: per-workspace
 metadata:
-  name: ansible-devspaces-devfile
+  name: molecule_test
+projects:
+  - name: Molecule in DevSpaces
+    git:
+      remotes:
+        origin: https://github.com/wzzrd/molecule_test.git
+      checkoutFrom:
+        remote: origin
+        revision: main
 components:
-  - name: tooling-container
-    container:
-      image: registry.redhat.io/ansible-automation-platform-tech-preview/ansible-devspaces-rhel9:latest
-      memoryRequest: 256M
-      memoryLimit: 6Gi
-      cpuRequest: 250m
-      cpuLimit: 2000m
-      args: ["tail", "-f", "/dev/null"]
-      env:
-        - name: "ANSIBLE_COLLECTIONS_PATH"
-          value: "~/.ansible/collections:/usr/share/ansible/collections"
-        - name: KUBEDOCK_ENABLED
-          value: "true"
-...
+- name: dev-tools
+  container: 
+    image: quay.io/wzzrd/dev-tools-maxim:latest
+    memoryRequest: 512M
+    memoryLimit: 8Gi
+    cpuRequest: 250m
+    cpuLimit: 2000m
+    env:
+    - name: HOME
+      value: "/projects/molecule_test"
+    - name: VSCODE_DEFAULT_WORKSPACE
+      value: "/projects/molecule_test/.code-workspace"
+    - name: 'ANSIBLE_COLLECTIONS_PATH'
+      value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/molecule_test/collections'
