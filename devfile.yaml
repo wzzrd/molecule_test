@@ -4,7 +4,7 @@ attributes:
 metadata:
   name: molecule_test
 projects:
-  - name: molecule-test
+  - name: molecule_test
     git:
       remotes:
         origin: https://github.com/wzzrd/molecule_test.git
@@ -21,8 +21,8 @@ components:
     cpuLimit: 2000m
     env:
     - name: HOME
-      value: "/projects/molecule-test"
+      value: "/projects/molecule_test"
     - name: VSCODE_DEFAULT_WORKSPACE
-      value: "/projects/molecule-test/.code-workspace"
+      value: "/projects/molecule_test/.code-workspace"
     - name: 'ANSIBLE_COLLECTIONS_PATH'
-      value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/molecule-test/collections'
+      value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/molecule_test/collections'
