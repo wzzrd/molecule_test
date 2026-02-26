@@ -4,7 +4,7 @@ attributes:
 metadata:
   name: molecule_test
 projects:
-  - name: Molecule-in-DevSpaces
+  - name: molecule-in-devspaces
     git:
       remotes:
         origin: https://github.com/wzzrd/molecule_test.git
