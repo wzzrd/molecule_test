@@ -9,7 +9,6 @@
         image: registry.access.redhat.com/ubi10/ubi-init:latest
         state: started
         command: /sbin/init
-        privileged: true
 
     - name: Write molecule instance config
       ansible.builtin.copy:
@@ -23,4 +22,3 @@
             identity_file: ""
             address: ""
             user: ""
-              #port: ""
