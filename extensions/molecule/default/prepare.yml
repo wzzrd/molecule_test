@@ -1,0 +1,29 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  vars:
+    sat_server: my.satellite.server
+    activation_key: my-activation-key-ubi9
+    sat_org: SatelliteOrg
+
+  tasks:
+
+    - name: Install katello ca consumer package
+      ansible.builtin.dnf:
+        name: http://{{ sat_server }}/pub/katello-ca-consumer-latest.noarch.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: Register with Satellite
+      community.general.redhat_subscription:
+        state: present
+        server_hostname: "{{ sat_server }}"
+        activationkey: "{{ activation_key }}"
+        server_insecure: true
+        org_id: "{{ sat_org }}"
+
+    - name: Disable ubi9 repos
+      ansible.builtin.file:
+        path: /etc/yum.repos.d/ubi.repo
+        state: absent

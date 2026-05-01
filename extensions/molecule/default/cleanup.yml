@@ -13,3 +13,7 @@
       ansible.builtin.dnf:
         name: httpd
         state: absent
+
+    - name: Unregister with Satellite
+      community.general.redhat_subscription:
+        state: absent
