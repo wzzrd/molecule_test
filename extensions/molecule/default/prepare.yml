@@ -3,9 +3,9 @@
   hosts: all
   gather_facts: false
   vars:
-    sat_server: my.satellite.server
-    activation_key: my-activation-key-ubi9
-    sat_org: SatelliteOrg
+    sat_server: "{{ lookup('ansible.builtin.env', 'SAT_SERVER', default='No Satellite Configured') }}"
+    activation_key: "{{ lookup('ansible.builtin.env', 'ACTIVATION_KEY', default='No Activation Key Configured') }}"
+    sat_org: "{{ lookup('ansible.builtin.env', 'SAT_ORG', default='No Satellite Organization Configured') }}"
 
   tasks:
 
