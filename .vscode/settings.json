@@ -7,5 +7,7 @@
     "ansible.completion.provideRedirectModules": true,
     "ansible.validation.lint.path": "/usr/local/bin/ansible-lint",
     "editor.wordWrap": "on",
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "ansible.executionEnvironment.enabled": false
+}
 }
