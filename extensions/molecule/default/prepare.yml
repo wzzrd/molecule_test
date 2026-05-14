@@ -23,7 +23,7 @@
         server_insecure: true
         org_id: "{{ sat_org }}"
 
-    - name: Disable ubi9 repos
+    - name: Disable ubi repos
       ansible.builtin.file:
         path: /etc/yum.repos.d/ubi.repo
         state: absent
