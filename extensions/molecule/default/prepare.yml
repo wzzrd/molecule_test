@@ -3,9 +3,9 @@
   hosts: all
   gather_facts: false
   vars:
-    sat_server: "{{ lookup('ansible.builtin.env', '/etc/secrets/satellite-secrets/SAT_SERVER', default='No Satellite Configured') }}"
-    activation_key: "{{ lookup('ansible.builtin.env', '/etc/secrets/satellite-secrets/ACTIVATION_KEY_10', default='No Activation Key Configured') }}"
-    sat_org: "{{ lookup('ansible.builtin.env', '/etc/secrets/satellite-secrets/SAT_ORG', default='No Satellite Organization Configured') }}"
+    sat_server: "{{ lookup('ansible.builtin.file', '/etc/secrets/satellite-secrets/SAT_SERVER', default='No Satellite Configured') }}"
+    activation_key: "{{ lookup('ansible.builtin.file', '/etc/secrets/satellite-secrets/ACTIVATION_KEY_10', default='No Activation Key Configured') }}"
+    sat_org: "{{ lookup('ansible.builtin.file', '/etc/secrets/satellite-secrets/SAT_ORG', default='No Satellite Organization Configured') }}"
 
   tasks:
     - name: Disable ubi repos
