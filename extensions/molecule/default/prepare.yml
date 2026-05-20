@@ -3,27 +3,26 @@
   hosts: all
   gather_facts: false
   vars:
-    sat_server: "{{ lookup('ansible.builtin.env', 'SAT_SERVER', default='No Satellite Configured') }}"
-    activation_key: "{{ lookup('ansible.builtin.env', 'ACTIVATION_KEY', default='No Activation Key Configured') }}"
-    sat_org: "{{ lookup('ansible.builtin.env', 'SAT_ORG', default='No Satellite Organization Configured') }}"
+    sat_server: "{{ lookup('ansible.builtin.env', '/etc/secrets/satellite-secrets/SAT_SERVER', default='No Satellite Configured') }}"
+    activation_key: "{{ lookup('ansible.builtin.env', '/etc/secrets/satellite-secrets/ACTIVATION_KEY_10', default='No Activation Key Configured') }}"
+    sat_org: "{{ lookup('ansible.builtin.env', '/etc/secrets/satellite-secrets/SAT_ORG', default='No Satellite Organization Configured') }}"
 
   tasks:
+    - name: Disable ubi repos
+      ansible.builtin.file:
+        path: /etc/yum.repos.d/ubi.repo
+        state: absent
 
     - name: Install katello ca consumer package
       ansible.builtin.dnf:
-        name: http://{{ sat_server }}/pub/katello-ca-consumer-latest.noarch.rpm
+        name: "{{ sat_server }}/pub/katello-ca-consumer-latest.noarch.rpm"
         state: present
+        validate_certs: false
         disable_gpg_check: true
 
     - name: Register with Satellite
       community.general.redhat_subscription:
         state: present
-        server_hostname: "{{ sat_server }}"
+        server_hostname: "{{ sat_server |urlsplit('hostname') }}"
         activationkey: "{{ activation_key }}"
-        server_insecure: true
         org_id: "{{ sat_org }}"
-
-    - name: Disable ubi repos
-      ansible.builtin.file:
-        path: /etc/yum.repos.d/ubi.repo
-        state: absent
