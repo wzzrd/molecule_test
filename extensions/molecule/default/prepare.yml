@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   vars:
-    sat_server: "{{ lookup('ansible.builtin.file', '/etc/secret/satellite-secret/SATELLITE_SERVER', default='No Satellite Configured') }}"
+    sat_server: "{{ lookup('ansible.builtin.file', '/etc/secret/satellite-secret/SATELLITE_URL', default='No Satellite Configured') }}"
     activation_key: "{{ lookup('ansible.builtin.file', '/etc/secret/satellite-secret/SATELLITE_KEY_10', default='No Activation Key Configured') }}"
     sat_org: "{{ lookup('ansible.builtin.file', '/etc/secret/satellite-secret/SATELLITE_ORG', default='No Satellite Organization Configured') }}"
 
