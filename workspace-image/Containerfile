@@ -14,9 +14,10 @@ RUN microdnf --disableplugin=subscription-manager install -y procps-ng openssl g
         ca-certificates aardvark-dns fuse-overlayfs util-linux sudo ; \
 
     # Install ansible and related tools
-    pip-3.11 install --no-cache-dir ansible-core==2.16.17 molecule==25.12.0 \
-    molecule-plugins==25.8.12 ansible-lint==26.1.1 ansible-creator==25.12.0 \
-    ansible-builder==3.1.1; \
+-   pip-3.11 install --no-cache-dir ansible-core==2.16.18 molecule==26.4.0 \
+-   molecule-plugins==25.8.12 ansible-lint==26.4.0 ansible-creator==26.4.3 \
+-   ansible-builder==3.1.1 black==26.5.1 tox-ansible==26.3.0 \
+-   pytest-ansible==26.4.0 ; \
 
     # Update complete image and cleanup
     microdnf update -y ; \
