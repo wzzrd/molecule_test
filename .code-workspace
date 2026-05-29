@@ -15,6 +15,9 @@
 		},
 		"ansible.validation.enabled": true,
 		"ansible.validation.lint.enabled": true,
-		"ansible.python.interpreterPath": "/bin/python3.11"
+		"ansible.python.interpreterPath": "/usr/bin/python3",
+		"ansible.validation.lint.path": "/usr/local/bin/ansible-lint",
+		"ansible.ansible.path": "/usr/local/bin/ansible",
+		"ansible.ansibleNavigator.path": "/usr/local/bin/ansible-navigator"
 	}
 }

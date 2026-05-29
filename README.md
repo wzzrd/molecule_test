@@ -11,3 +11,6 @@ It contains:
   - some scripts related to the above 
 
 Simply test by running `molecule test --command-borders --report`
+
+If you do not need Satellite 6 integration, remove the prepare playbook and the
+unregister task from cleanup.
