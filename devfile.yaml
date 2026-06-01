@@ -15,7 +15,7 @@ projects:
 components:
   - name: dev-tools
     container:
-      image: quay.thuisnet.com/techday/ansible-devspaces-2.20:latest
+      image: ghcr.io/wzzrd/techday-devspaces-ansible:2.20
       memoryRequest: 512M
       memoryLimit: 8Gi
       cpuRequest: 250m
