@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "redhat.vscode-yaml",
-        "redhat.ansible",
-        "ms-python.python@2025.20.1"
+        "redhat.ansible"
     ]
 }
