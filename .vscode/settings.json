@@ -8,6 +8,6 @@
     "ansible.validation.lint.path": "/usr/local/bin/ansible-lint",
     "editor.wordWrap": "on",
     "files.autoSave": "off",
-    "ansible.executionEnvironment.enabled": false
-}
+    "ansible.executionEnvironment.enabled": false,
+    "python.useEnvironmentsExtension": false
 }
