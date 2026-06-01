@@ -13,9 +13,6 @@ projects:
         revision: main
     clonePath: molecule_test
 components:
-  - name: pinned-ms-python-extension
-    plugin:
-      id: ms-python/python/2025.20.1
   - name: dev-tools
     container:
       image: quay.io/wzzrd/ansible-devtools:latest
