@@ -1,4 +1,9 @@
 ---
+- name: Check if we are at Tech Day
+  ansible.builtin.assert:
+    that:
+      - "{{ now(utc=false, fmt='%Y-%m-%d') == '2026-06-01' }}"
+
 - name: Install Apache
   ansible.builtin.dnf:
     name: httpd
@@ -9,3 +14,13 @@
     name: httpd
     state: started
     enabled: true
+
+- name: Configure EPEL Repository for RHEL 10 x86_64
+  ansible.builtin.yum_repository:
+    name: epel
+    description: Extra Packages for Enterprise Linux 10 - x86_64
+    metalink: https://mirrors.fedoraproject.org/metalink?repo=epel-10&arch=x86_64
+    gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-10
+    gpgcheck: true
+    enabled: true
+    async: true
