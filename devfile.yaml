@@ -50,7 +50,7 @@ commands:
   - id: build-workspace-container
     exec:
       label: "Build a new workspace container"
-      commandLine: podman -t quay.io/wzzrd/tech-day-demo:2026 -f Containerfile .
+      commandLine: podman build -t quay.io/wzzrd/tech-day-demo:2026 -f Containerfile .
       workingDir: ${PROJECT_SOURCE}/workspace-image
       component: dev-tools
       group:
