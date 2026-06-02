@@ -18,3 +18,32 @@ components:
           value: "/projects/molecule_test/.code-workspace"
         - name: ANSIBLE_COLLECTIONS_PATH
           value: "/projects/home/.ansible/collections:/usr/share/ansible/collections:/projects/molecule_test/collections"
+commands:
+  - id: install-molecule-dependencies
+    exec:
+      label: "Install molecule dependencies"
+      commandLine: molecule dependency
+      workingDir: ${PROJECT_SOURCE}
+      component: dev-tools
+  - id: run-molecule-create
+    exec:
+      label: "Create molecule container(s)"
+      commandLine: molecule create
+      workingDir: ${PROJECT_SOURCE}
+      component: dev-tools
+  - id: prepare-molecule
+    composite:
+      label: "Prepare for molecule testing"
+      commands:
+        - install-molecule-dependencies
+        - run-molecule-create
+      parallel: false
+  - id: run-molecule-tests
+    exec:
+      label: "Run molecule test(s)"
+      commandLine: molecule converge
+      workingDir: ${PROJECT_SOURCE}
+      component: dev-tools
+      group:
+        kind: test
+        isDefault: true
